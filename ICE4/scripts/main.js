@@ -21,6 +21,9 @@
         mainContent.appendChild(mainParagraph) // adds something after it was written.
     }
 
+    let michael = new contact("Michael Parisi", "4168037854", "michael.parisi@dcmail.ca")
+    console.log(michael.toString())
+
     function Start() {
         console.log("App Started!")
         
