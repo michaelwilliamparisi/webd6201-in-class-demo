@@ -30,9 +30,11 @@
 
         let firstString = "This is a "
         let secondString = `${firstString} paragraph that we added through javascript`
-        mainParagraph.textContent = secondString
+        //mainParagraph.textContent = secondString
 
-        mainContent.before(mainParagraph)
+        mainContent.appendChild(mainParagraph)
+
+        $("main").addClass("container").append(`<p id="mainParagraph" class="mt-3 container">${secondString}</p>`)
     }
 
     function DisplayProjects(){
@@ -50,10 +52,10 @@
         console.log(localStorage.getItem("Random Variable"))
         localStorage.removeItem("Random Variable")*/
 
-        console.log("Contacts Page")
+        //console.log("Contacts Page")
 
 
-        submitButton.addEventListener("click", function(event){
+        submitButton.addEventListener("click", function(){
             //event.preventDefault
             if (subscribeCheckbox.checked){
                 //if the user subscribes store the contact in local storage
@@ -87,10 +89,14 @@
                     <td class="text-center">${ contact.Name }</td>
                     <td class="text-center">${ contact.ContactNumber }</td>
                     <td class="text-center">${ contact.EmailAddress }</td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
-                </tr>
+                    <td class="text-center">
+                    <button value="" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i>&nbsp; Edit</button>
+                </td>
+                <td class="text-center">
+                    <button value="" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i>&nbsp; Delete</button>
+                </td>
                 `
+                
 
                 index++
             }
@@ -101,29 +107,9 @@
 
     }
     
-    function DisplayButton(){
-        let randomButton = document.getElementById("randomButton")
-        randomButton.addEventListener("click", function(){
-            location.href ="./projects.html"
-        })
-
-        let mainContent = document.getElementsByTagName("main")[0]
-        mainContent.setAttribute("class", "container")
-
-        console.log(mainContent)
-
-        let mainParagraph = document.createElement("p")
-        mainParagraph.setAttribute("id", "MainParagraph")
-
-        let firstString = "This is a main paragraph that we added through javascript"
-
-        mainParagraph.textContent = firstString
-
-        mainContent.appendChild(mainParagraph) // adds something after it was written.
+    function DisplayReferences() {
+        console.log("References Page")
     }
-
-    let michael = new contact("Michael Parisi", "4168037854", "michael.parisi@dcmail.ca")
-    console.log(michael.toString())
 
     function Start() {
         console.log("App Started!")
