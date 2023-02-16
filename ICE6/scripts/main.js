@@ -59,7 +59,7 @@
             //event.preventDefault
             if (subscribeCheckbox.checked){
                 //if the user subscribes store the contact in local storage
-                let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value)
+                let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value)
                 if (contact.serialize()){
                     let key = contact.Name.substring(0, 1) + Date.now()
                     localStorage.setItem(key, contact.serialize())
@@ -69,7 +69,7 @@
     }
 
     function AddContact(fullName, contactNumber, emailAddress){
-        let contact = new Contact(fullName, contactNumber, emailAddress)
+        let contact = new core.Contact(fullName, contactNumber, emailAddress)
                 if (contact.serialize()) {
                     let key = contact.Name.substring(0, 1) + Date.now()
                     localStorage.setItem(key, contact.serialize())
@@ -88,7 +88,7 @@
             //For every key in the keys collection
             for (const key of keys) {
                 let contactData = localStorage.getItem(key) //Get localStorage data value related to the key
-                let contact = new Contact()
+                let contact = new core.Contact()
                 contact.deserialize(contactData)
 
                 //Inject repeatable row into the contact list
@@ -150,7 +150,7 @@
             default:
                 {
                     
-                    let contact = new Contact()
+                    let contact = new core.Contact()
                     contact.deserialize(localStorage.getItem(page))
                     
                     $("#fullName").val(contact.Name)
