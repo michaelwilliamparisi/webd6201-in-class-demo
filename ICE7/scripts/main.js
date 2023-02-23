@@ -41,8 +41,36 @@
         console.log("Projects Page")
     }
 
+    function TestFullName(){
+        let messageArea = $('#messageArea').hide()
+
+        let fullNamePattern = /^([A-Z][a-z]{1,25})((\s|,|-)([A-Z][a-z]{1,25}))*(\s|,|-)*([A-Z][a-z]{1,25})*$/g 
+
+        $('#fullName').on("blur", function(){
+            let fullNameText = $(this).val()
+
+            if (!fullNamePattern.test(fullNameText)){
+                //failure to match full name iwth regex
+                $(this).trigger("focus").trigger("select")
+                
+
+                messageArea.addClass("alert alert-danger")
+                messageArea.text("Please enter a valid full name which means a capitalized first name and capitalized last name")
+                messageArea.show()
+            }else{
+                // success in mathcing full name with regex
+                messageArea.removeAttr("class")
+                messageArea.hide()
+            }
+        })
+    }
+    // create regular expression for contect number that takes optional set of brackets, dashes and spacing. First set of digets must be max min of three and last are max min of 4
+
+
     function DisplayContacts(){
         console.log("Contacts Page")
+
+        TestFullName()
 
         let submitButton = document.getElementById("submitButton")
         let subscribeCheckbox = document.getElementById("subscribeCheckbox")
